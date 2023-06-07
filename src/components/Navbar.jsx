@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
-import { SearchPopup } from "./SearchPopup";
-import { getGymsByFilterApi } from '../api/gym.api';
-import { getPostsBySearchApi } from '../api/post.api';
+import FilterContainer from '../containers/FilterContainer';
 
 const Navbar = ({ links, isShowPopup, handleChangePopupStatus }) => {
 
@@ -33,7 +31,7 @@ const Navbar = ({ links, isShowPopup, handleChangePopupStatus }) => {
                 </div>
             </div>
             {isShowPopup &&
-                <SearchPopup
+                <FilterContainer
                     handleChangePopupStatus={handleChangePopupStatus}
                 />}
         </div>

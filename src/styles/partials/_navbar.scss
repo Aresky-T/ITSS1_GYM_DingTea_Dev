@@ -267,7 +267,7 @@
                         border-bottom: 1px dashed #adabab;
 
                         &:hover {
-                            background-color: #fff;
+                            background-color: #dfdede;
                         }
 
 
@@ -295,6 +295,14 @@
                             overflow: hidden;
                             white-space: break-spaces;
                         }
+                    }
+
+                    .post-data {
+                        background-color: #818181;
+                    }
+
+                    .gym-data {
+                        background-color: #77B8D4;
                     }
 
                     &::-webkit-scrollbar {
