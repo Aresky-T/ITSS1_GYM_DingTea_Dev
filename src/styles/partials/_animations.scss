@@ -1,0 +1,21 @@
+@keyframes dropdownPopup{
+    from {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideToTop{
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120%);
+        opacity: 0;
+    }
+}
