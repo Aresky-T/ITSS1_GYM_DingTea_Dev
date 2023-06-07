@@ -4,30 +4,31 @@ import { useState } from 'react'
 import { getAllPostsApi } from '../api/post.api';
 import { useEffect } from 'react';
 import { getFiveLatestGymsApi } from '../api/gym.api';
+import {scrollToTop} from '../util/AppUtils.js';
 
 const HomeContainer = () => {
 
   const [posts, setPosts] = useState([]);
   const [gyms, setGyms] = useState([]);
 
-  function getAllPost () {
+  function getAllPost() {
     getAllPostsApi()
-    .then(res => {
-      setPosts(res.data.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(res => {
+        setPosts(res.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
-  function getFiveLatestGyms () {
+  function getFiveLatestGyms() {
     getFiveLatestGymsApi()
-    .then(res => {
-      setGyms(res.data.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(res => {
+        setGyms(res.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
@@ -35,10 +36,13 @@ const HomeContainer = () => {
     getFiveLatestGyms();
   }, [])
 
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+  
   return (
-    <>
-      <Home posts={posts} gyms={gyms}/>
-    </>
+      <Home posts={posts} gyms={gyms} />
   )
 }
 

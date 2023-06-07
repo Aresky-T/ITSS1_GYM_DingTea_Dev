@@ -17,9 +17,8 @@ const NavbarContainer = () => {
     ];
 
     function handleChangePopupStatus() {
-        setShowPopup(isShowPopup ? false : true);
+        setShowPopup(!isShowPopup);
     }
-
 
     return (
         <>

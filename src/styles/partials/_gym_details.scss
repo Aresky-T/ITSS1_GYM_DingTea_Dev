@@ -8,10 +8,12 @@
 
         .title_area {
             margin: 50px 0px;
+            padding: 5px;
 
             .avatar {
                 height: 80px;
                 width: 80px;
+                box-shadow: 0 0 5px;
             }
 
             .gym_name {
@@ -30,26 +32,26 @@
 
             .gym-info-right,
             .gym-info-left {
+
                 .introduce {
                     font-weight: 700;
                     font-size: 30px;
                     line-height: 29px;
-                    /* identical to box height */
-
-
                     color: #0D0C0C;
                     margin-bottom: 15px;
                 }
 
                 .introduce_content {
-                    font-style: normal;
+                    font-style: italic;
                     font-weight: 400;
-                    font-size: 25px;
+                    font-size: 24px;
                     line-height: 1.5;
                     color: #0D0C0C;
                     margin-bottom: 30px;
                     white-space: break-spaces;
                     overflow: hidden;
+                    display: flex;
+                    align-items: center;
                 }
 
                 .gym_image_container {
@@ -61,6 +63,13 @@
                         object-fit: cover;
                         margin-right: 50px;
                     }
+                }
+
+                .gym_options_container{
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: auto;
+                    grid-row-gap: 30px;
                 }
 
                 div.gym_image {
@@ -77,21 +86,38 @@
 
                     .gym_options {
                         font-weight: 400;
-                        font-size: 24px;
-                        line-height: 29px;
-                        color: #0D0C0C;
-                        margin-top: 20px;
+                        font-size: 20px;
+                        line-height: 20px;
+                        color: #6d6d6d;
+                        margin-top: 10px;
                         text-align: center;
                     }
                 }
             }
 
+            .gym-info-left {
+                width: 820px;
+            }
+
             .gym-info-right {
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                overflow: hidden;
+
                 .googlemap {
                     height: 300px;
                     width: 400px;
                     object-fit: cover;
                 }
+            }
+
+            .separation-line{
+                width: 1px;
+                border-left: 1px dashed #ccc;
+                background-color:transparent;
+                margin: 0 30px;
             }
         }
     }

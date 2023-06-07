@@ -9,3 +9,14 @@ export const getFiveLatestGymsApi = async () => {
 export const getAllGymsApi = async () => {
     return await axios.get(`${gymURL}/list-gyms`)
 }
+
+export const getGymDetailsApi = async (id) => {
+    return await axios.get(`${gymURL}/detail-gym/${id}`)
+}
+
+export const getGymsByFilterApi = async (name, ids) => {
+    return await axios.post(`${gymURL}/filter-gyms`, {
+        name: name,
+        options: [...ids]
+    })
+}

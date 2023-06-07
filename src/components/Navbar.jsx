@@ -1,35 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CiSearch } from 'react-icons/ci'
 import { SearchPopup } from "./SearchPopup";
-
-const initialFilterOptions = [
-    {
-        id: 1,
-        name: "option 1",
-        data: "option 1",
-        selected: false
-    },
-    {
-        id: 2,
-        name: "option 2",
-        data: "option 2",
-        selected: false
-    },
-    {
-        id: 3,
-        name: "option 3",
-        data: "option 3",
-        selected: false
-    }
-]
+import { getGymsByFilterApi } from '../api/gym.api';
+import { getPostsBySearchApi } from '../api/post.api';
 
 const Navbar = ({ links, isShowPopup, handleChangePopupStatus }) => {
 
-    const [filterOptions, setFilterOptions] = useState(initialFilterOptions)
-
     const location = useLocation();
-
+    
     const renderLinks = [...links].map(link => (
         <Link to={link.path}
             key={link.title}
@@ -38,16 +17,6 @@ const Navbar = ({ links, isShowPopup, handleChangePopupStatus }) => {
             {link.title}
         </Link>
     ))
-
-    function changeOptionSelected (optionId) {
-        const result = initialFilterOptions.map(option => {
-            if(option.id === optionId){
-                option.selected === true ? option.selected = false : option.selected = true
-            }
-            return option;
-        })
-        setFilterOptions(result);
-    }
 
     return (
         <div className='navbar container'>
@@ -65,10 +34,7 @@ const Navbar = ({ links, isShowPopup, handleChangePopupStatus }) => {
             </div>
             {isShowPopup &&
                 <SearchPopup
-                    isShowPopup={isShowPopup}
                     handleChangePopupStatus={handleChangePopupStatus}
-                    filterOptions={filterOptions}
-                    changeOptionSelected={changeOptionSelected}
                 />}
         </div>
     )
