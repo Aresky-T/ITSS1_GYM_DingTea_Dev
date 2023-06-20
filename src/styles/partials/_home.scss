@@ -4,13 +4,14 @@
 
     .content_area {
         margin-top: 80px;
-        padding: 10px;
+        padding-inline: 10vw;
         justify-content: space-between;
 
         .post_area,
         .gym_area {
             width: 45%;
             background-color: transparent;
+            box-sizing: border-box;
 
             .post_area_title, .gym_area_title {
                 font-weight: 700;
@@ -35,17 +36,26 @@
 
             .post_card {
                 align-items: center;
+                margin-bottom: 80px;
                 position: relative;
                 cursor: pointer;
 
                 .post_avatar {
                     width: 80px;
                     height: 80px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
                 }
 
                 .post_content {
                     height: 80px;
-                    padding-left: 25px;
+                    width: calc(100% - 80px);
+                    padding: 0 25px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;

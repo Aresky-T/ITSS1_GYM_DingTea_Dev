@@ -1,36 +1,86 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Login from '../components/Login'
-import { useFormik } from 'formik'
+import { loginUserApi } from '../api/auth.api'
 import { toast } from 'react-hot-toast'
+import {useDispatch, useSelector} from 'react-redux'
+import { addUserInfo } from '../redux/slice/auth.slice'
+import {useNavigate} from "react-router-dom";
+import {authSelector} from "../redux/selector";
 
 const LoginContainer = () => {
 
-  // const yup = require("yup");
-
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: ''
-    },
-    // validationSchema: yup.object().shape({
-    //   email: yup.string().required("Required"),
-    //   password: yup.string().required("Required")
-    // }),
-    onSubmit: values => {
-      console.log(values)
-      if(!values.email || values.email.trim().length === 0) {
-        toast.error("Email is required!")
-      }
-      if(!values.password || values.password.trim().length === 0){
-        toast.error("Password is required!")
-      }
-    }
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
   })
+  const [errors, setErrors] = useState({
+    email: null,
+    password: null
+  });
 
+  const user = useSelector(authSelector);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleChangeFormData = (e) => {
+    if (e.target) {
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value
+      })
+    }
+  };
+  const validateForm = ({ email, password }) => {
+    let emailLength = email.trim().length;
+    let passwordLength = password.trim().length;
+    const err = { email: null, password: null }
+
+    if (emailLength > 0 && passwordLength > 0) {
+      setErrors({
+        ...err, email: null, password: null
+      })
+      return true;
+    }
+
+    if (emailLength === 0) {
+      err.email = "Email can't not be blank!"
+    }
+
+    if (passwordLength === 0) {
+      err.password = "Password can't not be blank!"
+    }
+
+    setErrors(err);
+    return false;
+  }
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    const validForm = validateForm(formData);
+    validForm && loginUserApi({ email: formData.email, password: formData.password })
+      .then(res => {
+        dispatch(addUserInfo(res.data.data));
+        navigate('/')
+      })
+      .catch(err => {
+        toast.error(err.response.data.message)
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    if(user){
+      navigate('/')
+    }
+  }, [navigate, user])
 
   return (
     <>
-      <Login formik={formik}/>
+      <Login
+        errors={errors}
+        formData={formData}
+        handleSubmitForm={handleSubmitForm}
+        handleChangeFormData={handleChangeFormData}
+      />
     </>
   )
 }

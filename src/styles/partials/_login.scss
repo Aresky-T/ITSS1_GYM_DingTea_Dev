@@ -1,4 +1,4 @@
-.login{
+.login-container {
 
     height: 100%;
     display: flex;
@@ -7,17 +7,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 
-    .image-login{
+    .image-login {
         width: fit-content;
         height: 500px;
         overflow: hidden;
-        box-shadow:  -5px 0 10px var(--shadow-color);
+        box-shadow: -5px 0 10px var(--shadow-color);
+
         img {
             height: 100%;
         }
     }
 
-    .login-form{
+    .login-form {
         width: 300px;
         display: flex;
         flex-direction: column;
@@ -31,12 +32,12 @@
             user-select: none;
         }
 
-        p.title{
+        p.title {
             font-size: 25px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .form-item{
+        .form-item {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -52,20 +53,22 @@
             input {
                 height: 40px;
                 border: none;
-                border-radius: 5px;
                 background-color: #ccc;
+                font-weight: 600;
                 outline: 1px solid #ccc;
                 padding: 0 10px;
-                color: #595959;
+                color: #000000;
 
-                &:focus, &:hover {
-                    outline: 2px solid var(--primary-color);
+                &:focus,
+                &:hover {
+                    outline: 2px solid var(--secondary-color);
+                    background-color: #fff;
                 }
             }
 
             #eye-icon {
                 position: absolute;
-                bottom: 8px;
+                top: 35px;
                 right: 15px;
                 font-size: 20px;
                 cursor: pointer;
@@ -74,22 +77,56 @@
                     color: var(--primary-color);
                 }
             }
+
+            .login_err_msg {
+                width: 100%;
+                height: 15px;
+
+                font-size: 12px;
+                line-height: 15px;
+                font-style: italic;
+                color: rgb(198, 0, 0);
+                text-align: center;
+                padding: 5px;
+            }
         }
 
-        input[type = "submit"]{
+        input[type="submit"] {
             width: 100%;
             height: 40px;
             font-size: 16px;
             font-weight: 550;
             color: #fff;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             margin-top: 40px;
-            border-radius: 5px;
             border: none;
             cursor: pointer;
 
             &:hover {
-                box-shadow: 0 0 5px #5a5a5a;
+                background-color: #fff;
+                border: 2px solid var(--secondary-color);
+                color: var(--secondary-color);
+            }
+        }
+
+        .register-btn {
+            width: 100%;
+            height: 40px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #35A5D5;
+            margin-top: 20px;
+            cursor: pointer;
+
+            color: #35A5D5;
+            font-size: 16px;
+            font-weight: bold;
+
+            &:hover {
+                color: #fff;
+                background-color: #35A5D5;
             }
         }
 
@@ -97,27 +134,19 @@
             color: var(--primary-color)
         }
 
-        .sign-up-link, .forgot-password{
+        .forgot-password {
             font-size: 14px;
             margin-top: 15px;
-            font-style: italic;
-            width: 100%;
+            color: #35A5D5;
         }
 
-        .sign-up-link>a, .forgot-password {
+        .sign-up-link>a,
+        .forgot-password {
             font-weight: bold;
+
             &:hover {
                 color: rgb(41, 37, 245);
             }
         }
-
-        .forgot-password {
-            text-align: right;
-        }
-
-        .sign-up-link {
-            text-align: center;
-            margin-top: 30px;
-        }
     }
-} 
+}

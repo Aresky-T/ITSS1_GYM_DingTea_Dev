@@ -1,10 +1,10 @@
 import React from 'react'
 import Home from '../components/Home'
 import { useState } from 'react'
-import { getAllPostsApi } from '../api/post.api';
+import { getRecentPostsApi } from '../api/post.api';
 import { useEffect } from 'react';
 import { getFiveLatestGymsApi } from '../api/gym.api';
-import {scrollToTop} from '../util/AppUtils.js';
+import { scrollToTop } from '../util/AppUtils.js';
 
 const HomeContainer = () => {
 
@@ -12,7 +12,7 @@ const HomeContainer = () => {
   const [gyms, setGyms] = useState([]);
 
   function getAllPost() {
-    getAllPostsApi()
+    getRecentPostsApi()
       .then(res => {
         setPosts(res.data.data)
       })
@@ -40,9 +40,9 @@ const HomeContainer = () => {
   useEffect(() => {
     scrollToTop();
   }, []);
-  
+
   return (
-      <Home posts={posts} gyms={gyms} />
+    <Home posts={posts} gyms={gyms} />
   )
 }
 

@@ -1,27 +1,31 @@
-export function customLocalStorage (key){
-    if(!localStorage.getItem(key)){
+export function customLocalStorage(key) {
+    if (!localStorage.getItem(key)) {
         localStorage.setItem(key, JSON.stringify({}))
     }
 
     const storage = JSON.parse(localStorage.getItem(key));
 
-    function autoSave(){
+    function autoSave() {
         localStorage.setItem(key, JSON.stringify(storage));
     }
 
-    function setProperty(name, value){
+    function setProperty(name, value) {
         storage[name] = value;
         autoSave();
     }
 
-    function getProperty(name){
+    function getProperty(name) {
         return storage[name];
     }
 
-    function deleteProperty(name){
+    function deleteProperty(name) {
         delete storage[name]
         autoSave();
     }
 
-    return {getProperty, setProperty, deleteProperty}
+    return { getProperty, setProperty, deleteProperty }
+}
+
+export function removeLocalStorage(storageName) {
+    localStorage.removeItem(storageName);
 }

@@ -19,7 +19,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font: inherit;
+	// font: inherit;
 	vertical-align: baseline;
     box-sizing: border-box;
 }
@@ -50,18 +50,20 @@ table {
 // Custom style
 
 :root {
+    --animation-speed: 1;
     --background-color: #ffffff;
     --background-light: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --shadow-color-2: rgba(0, 0, 0, 0.4);
-    --primary-color: rgb(161, 0, 0);
+    // --primary-color: rgb(161, 0, 0);
+    --primary-color: #F7349D;
+    --secondary-color: #35A5D5;
     --navbar-color: #ccc;
     --text-color: #0A0A0A;
     --text-color-2: #333333;
     --text-color-3: #757575;
     --text-light: #575757;
     --font-size: 16px;
-    --animation-speed: 1;
 }
 
 @function getAnimationDuration($duration: number) {
@@ -72,17 +74,26 @@ body {
     font-size: var(--font-size);
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
-    padding-top: 55px;
     position: relative;
     min-width: 580px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #cfcfcf;
+    }
 }
 
 .main {
-    padding-block: 3vw;
-}
-
-.container {
-    padding-inline: 10vw;
+    padding-block: 75px;
+    writing-mode: horizontal-tb;
 }
 
 .flex-container {
@@ -98,6 +109,11 @@ body {
 @import url("./partials/_navbar.scss");
 @import url("./partials/_login.scss");
 @import url("./partials/_animations.scss");
-@import url("./partials//_home.scss");
-@import url("./partials//_gym_details.scss");
+@import url("./partials/_home.scss");
+@import url("./partials/_gym_details.scss");
 @import url("./partials/_carousel.scss");
+@import url("./partials/_register.scss");
+@import url("./partials/_post_details.scss");
+@import url("./partials/_create_post.scss");
+@import url("./partials/_loading.scss");
+@import url("./partials/_not_found_page.scss");

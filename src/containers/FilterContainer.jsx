@@ -80,7 +80,7 @@ const FilterContainer = ({ handleChangePopupStatus }) => {
             setPostsDataFilter([]);
             setGymsDataFilter([]);
         }
-
+        //eslint-disable-next-line
     }, [search, filterOptions])
 
     useEffect(() => {

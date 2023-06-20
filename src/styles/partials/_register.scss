@@ -1,0 +1,233 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .register__title {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+
+    .register__btn {
+        margin-top: 30px;
+
+        width: 300px;
+        height: 40px;
+
+        background-color: var(--secondary-color);
+        color: #fff;
+
+        font-weight: bold;
+        font-size: 16px;
+
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+            outline: 2px solid var(--secondary-color);
+            background-color: #fff;
+            color: var(--secondary-color);
+        }
+    }
+
+    .btn--back {
+        align-self: flex-start;
+        background-color: transparent;
+        color: var(--primary-color);
+
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+
+        border: none;
+        outline: none;
+        padding: 0;
+
+        position: relative;
+        top: -20px;
+
+        cursor: pointer;
+    }
+
+    .register__p1 {
+        .register__field {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            width: 300px;
+
+            label {
+                color: var(--text-color);
+                font-size: 16px;
+                font-weight: bold;
+                padding-block: 10px;
+            }
+
+            input {
+                width: 100%;
+                height: 40px;
+                box-sizing: border-box;
+                padding: 0 10px;
+
+                border: none;
+
+                background-color: #ccc;
+                color: #000000;
+                font-weight: 600;
+
+                &:focus,
+                &:hover {
+                    outline: 2px solid #35a5d5;
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+
+    .register__p2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .page2-main {
+            display: grid;
+            grid-template-columns: repeat(2, 500px);
+            grid-template-rows: repeat(2, 250px);
+            grid-template-areas: "a b" "c c";
+            row-gap: 20px;
+
+            .register-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .rgi__title {
+                    font-weight: bold;
+                    padding-block: 5px;
+                }
+            }
+
+            .register__upload-image {
+                .register__main {
+                    display: flex;
+                    width: 100%;
+                    height: 200px;
+
+                    .rgm__choose-file {
+                        width: 200px;
+                        height: 200px;
+
+                        border: 2px dashed #ccc;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        user-select: none;
+                        cursor: pointer;
+
+                        &:hover {
+                            border-style: solid;
+                            border-color: var(--secondary-color);
+                        }
+                    }
+
+                    .rgm__selectedFiles {
+                        width: 200px;
+                        height: 200px;
+
+                        display: grid;
+                        grid-template-columns: repeat(2, 100px);
+                        grid-template-rows: repeat(2, 100px);
+                        margin-left: 30px;
+
+                        .rgm__selectedFiles__item {
+                            overflow: hidden;
+                            width: 100%;
+                            height: 100%;
+                            border: 3px solid #fff;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                    }
+                }
+
+                input {
+                    display: none;
+                }
+            }
+
+            .register__option {
+                justify-content: space-between;
+
+                .rgi__title {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .add_option {
+                        width: 50px;
+                        height: 30px;
+
+                        button {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                            outline: none;
+                            background-color: var(--secondary-color);
+                            color: #fff;
+                            font-weight: bold;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #fff;
+                                color: var(--secondary-color);
+                                border: 2px solid var(--secondary-color);
+                            }
+                        }
+                    }
+                }
+
+                .register__main {
+                    .rgm__options {
+                        .rgm_options-list {
+                            height: 200px;
+                            width: 100%;
+                            border: 2px dashed #ccc;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+
+            .register__description {
+                grid-area: c;
+
+                textarea {
+                    box-sizing: border-box;
+                    height: 200px;
+                    width: 100%;
+
+                    border: 2px dashed #ccc;
+                    outline: none;
+                    padding: 10px;
+
+                    font-family: inherit;
+
+                    &:focus, &:hover {
+                        border-style: solid;
+                        border-color: var(--secondary-color);
+                    }
+                }
+            }
+        }
+    }
+}

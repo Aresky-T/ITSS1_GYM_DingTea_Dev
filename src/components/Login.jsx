@@ -1,48 +1,56 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
+import { APP_ROUTE } from '../constants/routes';
 
-const Login = ({formik}) => {
+const Login = ({ errors, formData, handleSubmitForm, handleChangeFormData }) => {
 
     const [isShow, setShow] = useState(false);
+    const navigate = useNavigate();
 
-    function showPassword (){
+    function showPassword() {
         setShow(!isShow);
     }
 
     return (
-        <div className='login container'>
+        <div className='login-container'>
             <div className="image-login">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPY72nxq7PDnE1-VmJySKBYGboeYT-QBTU164jlpWhXV_PoOGHic-2wExvD6Arvf6yVww&usqp=CAU" alt="" />
             </div>
             <form className="login-form"
-                onSubmit={formik.handleSubmit}
+                onSubmit={handleSubmitForm}
             >
-                <p className='title'>LOGIN</p>
+                <p className='title'>Login</p>
                 <div className="form-item">
-                    <label htmlFor="">Email:</label>
-                    <input type="text" className="form-field" 
+                    <label htmlFor="">Email</label>
+                    <input type="text" className="form-field"
                         name='email'
-                        value={formik.values.email}
-                        onChange={formik.handleChange}
+                        value={formData.email}
+                        onChange={handleChangeFormData}
                     />
+                    <p className='login_err_msg'>{errors.email || ''}</p>
                 </div>
                 <div className="form-item">
-                    <label htmlFor="">Password:</label>
-                    <input type={isShow ? "text" : "password"} className="form-field" 
+                    <label htmlFor="">Password</label>
+                    <input type={isShow ? "text" : "password"} className="form-field"
                         name='password'
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
+                        value={formData.showPassword}
+                        onChange={handleChangeFormData}
                     />
                     <span id='eye-icon'
                         onClick={showPassword}
                     >
-                        {isShow ? <AiFillEye/> : <AiFillEyeInvisible />}
+                        {isShow ? <AiFillEye /> : <AiFillEyeInvisible />}
                     </span>
+                    <p className='login_err_msg'>{errors.password || ''}</p>
                 </div>
-                <Link className='forgot-password'>Forgot password?</Link>
                 <input type="submit" value="Login" />
-                <div className="sign-up-link">Don't have an account? <Link to="/auth/register">Sign up</Link></div>
+                <div className="register-btn"
+                    onClick={() => {
+                        navigate(APP_ROUTE.REGISTER)
+                    }}
+                >Register</div>
+                <Link className='forgot-password'>Forgot password?</Link>
             </form>
         </div>
     )

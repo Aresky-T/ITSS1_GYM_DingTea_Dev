@@ -16,7 +16,7 @@ const Home = ({ posts, gyms }) => {
                     rewind: true,
                     autoplay: true,
                     pauseOnHover: false,
-                    type: 'loop', 
+                    type: 'loop',
                     interval: 3000,
                     arrows: false
                 }}
@@ -50,7 +50,9 @@ const Home = ({ posts, gyms }) => {
                                         navigate(`/post/${post.id}`)
                                     }}
                                 >
-                                    <img src={require("../img/avatar.png")} className="post_avatar" alt="" />
+                                    <div className="post_avatar">
+                                        <img src={require("../img/avatar.png")} alt="" />
+                                    </div>
                                     <div className="post_content">
                                         <div className="flex-container author_n_time">
                                             <div className="post_author">
@@ -65,7 +67,6 @@ const Home = ({ posts, gyms }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='separation-line'></div>
                             </React.Fragment>
                         ))
                     }
@@ -74,7 +75,7 @@ const Home = ({ posts, gyms }) => {
 
                 <div className="gym_area">
                     <div className="gym_area_title">
-                        Hot Gym
+                        Featured Gyms
                     </div>
                     {
                         [...gyms].map(gym => (

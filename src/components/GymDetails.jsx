@@ -33,9 +33,9 @@ const GymDetails = ({gym}) => {
                         </div>
 
                         <div className="flex-container gym_image_container">
-                            <img className="gym_image" src={gym.image1} alt="" />
-                            <img className="gym_image" src={gym.image2} alt="" />
-                            <img className="gym_image" src={gym.image3} alt="" />
+                            <img className="gym_image" src={gym.image1} alt="gym-i1" />
+                            <img className="gym_image" src={gym.image2} alt="gym-i2" />
+                            <img className="gym_image" src={gym.image3} alt="gym-i3" />
                         </div>
 
                         <div className="introduce">
