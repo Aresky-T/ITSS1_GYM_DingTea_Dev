@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 import { APP_ROUTE } from '../constants/routes';
 
-const Login = ({ errors, formData, handleSubmitForm, handleChangeFormData }) => {
+const Login = ({ errors, formData, loginMsg, handleSubmitForm, handleChangeFormData }) => {
 
     const [isShow, setShow] = useState(false);
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Login = ({ errors, formData, handleSubmitForm, handleChangeFormData }) => 
                 <p className='title'>Login</p>
                 <div className="form-item">
                     <label htmlFor="">Email</label>
-                    <input type="text" className="form-field"
+                    <input type="email" className="form-field"
                         name='email'
                         value={formData.email}
                         onChange={handleChangeFormData}
@@ -44,6 +44,7 @@ const Login = ({ errors, formData, handleSubmitForm, handleChangeFormData }) => 
                     </span>
                     <p className='login_err_msg'>{errors.password || ''}</p>
                 </div>
+                <div className="login-msg">{loginMsg || ''}</div>
                 <input type="submit" value="Login" />
                 <div className="register-btn"
                     onClick={() => {

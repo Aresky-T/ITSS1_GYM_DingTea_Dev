@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Login from '../components/Login'
 import { loginUserApi } from '../api/auth.api'
-import { toast } from 'react-hot-toast'
 import {useDispatch, useSelector} from 'react-redux'
 import { addUserInfo } from '../redux/slice/auth.slice'
 import {useNavigate} from "react-router-dom";
@@ -17,6 +16,7 @@ const LoginContainer = () => {
     email: null,
     password: null
   });
+  const [loginMsg, setLoginMsg] = useState();
 
   const user = useSelector(authSelector);
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const LoginContainer = () => {
         navigate('/')
       })
       .catch(err => {
-        toast.error(err.response.data.message)
+        setLoginMsg(err.response.data.message);
         console.log(err)
       })
   }
@@ -73,11 +73,16 @@ const LoginContainer = () => {
     }
   }, [navigate, user])
 
+  useEffect(() => {
+    setLoginMsg('')
+  }, [formData])
+
   return (
     <>
       <Login
         errors={errors}
         formData={formData}
+        loginMsg={loginMsg}
         handleSubmitForm={handleSubmitForm}
         handleChangeFormData={handleChangeFormData}
       />
