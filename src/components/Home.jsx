@@ -51,7 +51,7 @@ const Home = ({ posts, gyms }) => {
                                     }}
                                 >
                                     <div className="post_avatar">
-                                        <img src={require("../img/avatar.png")} alt="" />
+                                        <img src={post.image} alt="" />
                                     </div>
                                     <div className="post_content">
                                         <div className="flex-container author_n_time">
