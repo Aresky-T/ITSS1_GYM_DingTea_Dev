@@ -1,0 +1,168 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #cccccc96;
+    z-index: 1000;
+
+    justify-content: center !important;
+
+    .custom-modal {
+        width: 500px;
+        height: fit-content;
+
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 3px 0 rgba(82, 82, 82, 0.5);
+
+        position: relative;
+        top: 50px;
+        animation: dropdownPopup 0.5s forwards;
+
+        .modal__header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            width: 100%;
+            height: 50px;
+            border-radius: 5px 5px 0 0;
+            border-bottom: 2px solid #ccc;
+
+            .modal-title {
+                color: var(--text-color-2)
+            }
+
+            .modal-btn--close {
+                position: absolute;
+                top: calc((100% - 30px) / 2);
+                right: 15px;
+                display: flex;
+                padding: 5px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 20px;
+                transition: all .1s linear;
+
+                &:hover {
+                    background-color: #c0c0c0;
+                    box-shadow:  0 0 3px 0 rgba(103, 103, 103, 0.5) inset;
+                }
+
+            }
+        }
+
+        .modal__main {
+            padding: 20px;
+
+            .modal__main__title {
+                padding: 15px 0 5px 0
+            }
+
+            .modal-main-box {
+                .modal-main-form-control {
+                    #select-option__label {
+                        background-color: #fff;
+                        padding-inline: 5px;
+                    }
+                }
+            }
+
+            .option-field {
+                width: 100%;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                outline: none;
+                padding: 10px;
+                border-radius: 4px;
+
+                &:hover, &:focus {
+                    border-color: #000;
+                }
+            }
+
+            input.option-field {
+                height: 50px;
+            }
+
+            textarea.option-field {
+                height: 150px;
+            }
+
+            .option-image-upload {
+                height: 100px;
+                border: 2px dashed #ccc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .choose-file {
+                    width: 60%;
+                    height: 80%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border: 2px solid #ccc;
+                    border-radius: 10px;
+
+                    &:hover {
+                        border-color: var(--secondary-color);
+                    }
+
+                    p {
+                        font-size: 15px;
+                        font-weight: bold;
+                        margin-top: 10px;
+                    }
+
+                    .choose-file-icon {
+                        height: 30px;
+                        width: 40px;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                input {
+                    display: none;
+                }
+            }
+        }
+
+        .modal-footer {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+
+            button {
+                padding: 10px 20px;
+                background-color: var(--secondary-color);
+                border: 2px solid var(--secondary-color);
+                font-weight: bold;
+                color: #fff;
+                transition: all .2s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #fff;
+                    color: var(--secondary-color);
+                }
+            }
+        }
+    }
+}

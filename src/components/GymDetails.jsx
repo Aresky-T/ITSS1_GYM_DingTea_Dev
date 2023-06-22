@@ -5,8 +5,6 @@ import { scrollToTop } from '../util/AppUtils';
 
 const GymDetails = ({ gym }) => {
 
-    // const map = require("../img/googlemap.jpg")
-
     useEffect(() => {
         scrollToTop();
     }, [])
@@ -31,15 +29,21 @@ const GymDetails = ({ gym }) => {
                         </div>
 
                         <div className="flex-container gym_image_container">
-                            <div className="gym_image">
+                            {gym.image1 && <div className="gym_image">
                                 <img src={gym.image1} alt="gym-i1" />
-                            </div>
-                            <div className="gym_image">
+                            </div>}
+                            {gym.image2 && <div className="gym_image">
                                 <img src={gym.image2} alt="gym-i2" />
-                            </div>
-                            <div className="gym_image">
+                            </div>}
+                            {gym.image3 && <div className="gym_image">
                                 <img src={gym.image3} alt="gym-i3" />
-                            </div>
+                            </div>}
+                            {gym.image4 && <div className="gym_image">
+                                <img src={gym.image4} alt="gym-i4" />
+                            </div>}
+                            {gym.image5 && <div className="gym_image">
+                                <img src={gym.image5} alt="gym-i5" />
+                            </div>}
                         </div>
 
                         <div className="introduce">
@@ -77,10 +81,8 @@ const GymDetails = ({ gym }) => {
                         <div className="introduce_content">
                             {gym.address?.address}
                         </div>
-                        {/* <img className="googlemap" src={map} alt="" /> */}
                         <iframe
-                            width="450"
-                            height="250"
+                            width="450" height="250"
                             frameborder="0"
                             referrerpolicy="no-referrer-when-downgrade"
                             src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDc7PnOq3Hxzq6dxeUVaY8WGLHIePl0swY&q=Eiffel+Tower,Paris+France`}

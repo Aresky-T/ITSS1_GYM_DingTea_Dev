@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import Register from '../components/Register'
 import {useSelector} from "react-redux";
 import {authSelector} from "../redux/selector";

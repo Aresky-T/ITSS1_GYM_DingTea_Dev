@@ -110,57 +110,81 @@
                 }
             }
 
-            .register__upload-image {
-                .register__main {
+            .register__upload-file {
+                justify-content: space-between;
+                margin-right: 50px;
+
+                .upload-gym-images,
+                .upload-gym-logo {
                     display: flex;
-                    width: 100%;
-                    height: 200px;
+                    flex-direction: column;
+                    justify-content: space-between;
 
-                    .rgm__choose-file {
-                        width: 200px;
-                        height: 200px;
-
-                        border: 2px dashed #ccc;
-
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        user-select: none;
-                        cursor: pointer;
-
-                        &:hover {
-                            border-style: solid;
-                            border-color: var(--secondary-color);
-                        }
+                    .rgi__title {
+                        font-weight: bold;
+                        padding-block: 5px;
                     }
 
-                    .rgm__selectedFiles {
-                        width: 200px;
+                    input {
+                        display: none;
+                    }
+
+                    .register__main {
+                        display: flex;
+                        width: 100%;
                         height: 200px;
 
-                        display: grid;
-                        grid-template-columns: repeat(2, 100px);
-                        grid-template-rows: repeat(2, 100px);
-                        margin-left: 30px;
+                        .rgm__choose-file {
+                            width: 200px;
+                            height: 200px;
 
-                        .rgm__selectedFiles__item {
-                            overflow: hidden;
-                            width: 100%;
-                            height: 100%;
-                            border: 3px solid #fff;
+                            border: 2px dashed #ccc;
 
-                            img {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            user-select: none;
+                            cursor: pointer;
+
+                            &:hover {
+                                border-style: solid;
+                                border-color: var(--secondary-color);
+                            }
+                        }
+
+                        .rgm__selectedFiles {
+                            width: 200px;
+                            height: 200px;
+                            border: 2px dashed #ccc;
+
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(60px, max-content));
+                            grid-template-rows: repeat(3, 1fr);
+
+                            .rgm__selectedFiles__item {
+                                overflow: hidden;
                                 width: 100%;
                                 height: 100%;
-                                object-fit: cover;
+                                border: 3px solid #fff;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
                             }
                         }
                     }
                 }
 
-                input {
-                    display: none;
+                .upload-gym-logo {
+                    .register__main {
+                        .rgm__selectedFiles{
+                            grid-template-columns: 100%;
+                            grid-template-rows: 100%;
+                        }
+                    }
                 }
             }
 
@@ -222,7 +246,8 @@
 
                     font-family: inherit;
 
-                    &:focus, &:hover {
+                    &:focus,
+                    &:hover {
                         border-style: solid;
                         border-color: var(--secondary-color);
                     }
