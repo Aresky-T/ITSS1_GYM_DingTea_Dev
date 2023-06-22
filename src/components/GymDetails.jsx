@@ -73,7 +73,7 @@ const GymDetails = ({ gym }) => {
                         </div>
                         <div className="introduce_content">
                             <FcAlarmClock size={24} />
-                            <span> 8:00 - 22:00 / T2 - VN</span>
+                            <span> 8:00 - 22:00 / T2 - CN</span>
                         </div>
                         <div className="introduce">
                             Address
