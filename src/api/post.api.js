@@ -6,12 +6,9 @@ export const getAllPostsApi = async () => {
     return axios.get(`${postURL}/recent-posts`)
 } 
 
-export const getPostsBySearchApi = async (search) => {
-    return axios.get(`${postURL}/filter-posts`, {
-        params: {
-            title: search
-        }
-    })
+export const getPostsBySearchApi = async (title, options) => {
+    console.log(options)
+    return axios.post(`${postURL}/filter-posts`, {title, options: [...options]})
 }
 
 export const getPostByIdApi = (postId) => {

@@ -8,7 +8,7 @@
     box-sizing: border-box;
     color: var(--text-color);
     height: 75px;
-    min-width: 580px;
+    min-width: 820px;
     width: 100%;
     padding-inline: 10vw;
 
@@ -151,7 +151,7 @@
                 width: 100%;
                 padding: 10px 0;
                 text-align: center;
-                box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
                 &:hover {
                     background-color: var(--primary-color);
@@ -276,6 +276,22 @@
                                 color: #000;
                                 border: none;
                             }
+
+                            &:nth-child(1) {
+                                background-color: #77b8d4;
+                            }
+                            &:nth-child(2) {
+                                background-color: #5ee61f;
+                            }
+                            &:nth-child(3) {
+                                background-color: #ff941b;
+                            }
+                            &:nth-child(4) {
+                                background-color: #a6248e;
+                            }
+                            &:nth-child(5) {
+                                background-color: #143ee6;
+                            }
                         }
                     }
                 }
@@ -306,7 +322,7 @@
                         width: 100%;
                         height: 50px;
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: flex-start;
                         align-items: center;
                         cursor: pointer;
                         transition: all 100ms linear;
@@ -349,6 +365,21 @@
 
                     .gym-data {
                         background-color: #77b8d4;
+
+                        .filter-data-content {
+                            .filter-data-gym-name {
+                                font-weight: bold;
+                            }
+
+                            .filter-data-gym-address {
+                                font-size: 13px;
+                                font-style: italic;
+
+                                svg {
+                                    color: var(--primary-color);
+                                }
+                            }
+                        }
                     }
 
                     &::-webkit-scrollbar {
@@ -383,6 +414,28 @@
                 svg {
                     font-size: 24px;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1192px) {
+    .navbar {
+        padding-inline: 5vw;
+        .navbar-main {
+            .nav-links, .user-area {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .navbar {
+        padding-inline: 5vw;
+        .navbar-main {
+            .search-bar {
+                display: none;
             }
         }
     }

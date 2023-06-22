@@ -31,8 +31,8 @@ const FilterContainer = ({ handleChangePopupStatus }) => {
             })
     }
 
-    function handleFilterPosts(title) {
-        getPostsBySearchApi(title)
+    function handleFilterPosts(title, ids) {
+        getPostsBySearchApi(title, ids)
             .then(res => {
                 setPostsDataFilter(res.data.data);
             })
@@ -41,7 +41,7 @@ const FilterContainer = ({ handleChangePopupStatus }) => {
             })
     }
 
-    function handleFilterGyms(name, ids) {
+    function handleFilterGyms(search, ids) {
         getGymsByFilterApi(search, ids)
             .then(res => {
                 setGymsDataFilter(res.data.data);
@@ -70,15 +70,9 @@ const FilterContainer = ({ handleChangePopupStatus }) => {
         const searchLength = search.trim().length;
         const idsLength = ids.length;
 
-        if (searchLength >= 1) {
-            handleFilterPosts(search.trim());
-            handleFilterGyms(search, ids);
-        } else if (searchLength < 1 && idsLength >= 1) {
-            handleFilterGyms(search, ids);
-            setPostsDataFilter([]);
-        } else {
-            setPostsDataFilter([]);
-            setGymsDataFilter([]);
+        if (searchLength > 0 || idsLength > 0) {
+            handleFilterPosts(search.trim(), ids);
+            handleFilterGyms(search.trim(), ids);
         }
         //eslint-disable-next-line
     }, [search, filterOptions])

@@ -40,7 +40,7 @@
                     padding: 12px 20px;
                     box-sizing: border-box;
                     background-color: #bcbcbc;
-                    color: white;
+                    color: rgb(51, 51, 51);
                 }
 
                 textarea {
@@ -50,7 +50,7 @@
                     box-sizing: border-box;
                     font-size: 16px;
                     resize: none;
-                    color: white;
+                    color: rgb(51, 51, 51);
                 }
 
                 label {
@@ -138,22 +138,20 @@
                     justify-content: space-between;
 
                     button {
-                        cursor: pointer;
-                        outline: none;
-                        border: none;
-                        transition: all 100ms ease-in-out;
-                    }
-
-                    .save_button {
-                        width: 300px;
+                        width: 280px;
                         height: 80px;
                         color: white;
                         font-weight: 500;
                         font-size: 32px;
-
+                        cursor: pointer;
+                        outline: none;
+                        border: none;
+                        transition: all 100ms ease-in-out;
                         align-items: center;
                         justify-content: center;
+                    }
 
+                    .save_button {
                         background: var(--secondary-color);
 
                         &:hover {
@@ -163,23 +161,71 @@
                         }
                     }
 
+                    .block_button {
+                        pointer-events: none;
+                        color: #7a7a7a;
+                        user-select: none;
+                        cursor: default;
+                    }
+
                     .cancel_button {
-                        width: 280px;
-                        height: 80px;
-                        color: white;
-                        font-weight: 500;
-                        font-size: 32px;
-
-                        align-items: center;
-                        justify-content: center;
-
                         background: #bfc5c8;
-
                         margin-left: 50px;
 
                         &:hover {
                             background-color: #000;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1192px) {
+    .create-post-container {
+        .content_area {
+
+            .create_post_title {
+                text-align: center;
+            }
+
+            .create_post_main {
+                flex-direction: column;
+                align-items: center;
+                height: fit-content;
+
+                .title_n_content, .side_form {
+                    width: 100%;
+                    align-items: center;
+                }
+
+                .title_n_content {
+                    input, textarea {
+                        width: 650px;
+                    }
+                }
+
+                .side_form {
+
+                    .side_form_upload_image {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .image_n_preview {
+                            width: 100%;
+                            justify-content: center;
+
+                            .preview_image {
+                                margin-left: 30px;
+                            }
+                        }
+                    }
+
+                    .button_area {
+                        margin-top: 50px;
                     }
                 }
             }

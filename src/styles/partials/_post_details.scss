@@ -227,3 +227,28 @@
         }
     }
 }
+
+@media screen and (max-width: 1255px) {
+    .post-details-container {
+        .content_area {
+            padding-inline: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .post-details-container {
+        .content_area {
+            padding-inline: 10px;
+            grid-template-columns: 100%;
+            row-gap: 50px;
+
+            .side_content {
+                .post_card {
+                    width: 50%;
+                    min-width: 440px;
+                }
+            }
+        }
+    }
+}

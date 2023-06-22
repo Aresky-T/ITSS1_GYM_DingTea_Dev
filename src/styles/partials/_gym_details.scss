@@ -21,24 +21,22 @@
                 font-weight: 400;
                 font-size: 36px;
                 line-height: 44px;
-                color: #0D0C0C;
+                color: #0d0c0c;
                 margin-left: 50px;
                 align-self: center;
             }
         }
 
         .gym_info_area {
-
             justify-content: space-between;
 
             .gym-info-right,
             .gym-info-left {
-
                 .introduce {
                     font-weight: 700;
                     font-size: 30px;
                     line-height: 29px;
-                    color: #0D0C0C;
+                    color: #0d0c0c;
                     margin-bottom: 15px;
                 }
 
@@ -47,7 +45,7 @@
                     font-weight: 400;
                     font-size: 24px;
                     line-height: 1.5;
-                    color: #0D0C0C;
+                    color: #0d0c0c;
                     margin-bottom: 30px;
                     white-space: break-spaces;
                     overflow: hidden;
@@ -56,56 +54,71 @@
                 }
 
                 .gym_image_container {
+                    width: 100%;
                     margin-bottom: 50px;
-
-                    img.gym_image {
-                        width: 240px;
-                        height: 220px;
-                        object-fit: cover;
-                        margin-right: 50px;
-                    }
-                }
-
-                .gym_options_container{
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    grid-template-rows: auto;
-                    grid-row-gap: 30px;
-                }
+                    grid-template-columns: repeat(auto-fill, minmax(220px, max-content));
+                    grid-auto-rows: 220px;
+                    row-gap: 30px;
+                    column-gap: 30px;
 
-                div.gym_image {
+                    .gym_image {
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
 
-                    width: 240px;
-                    object-fit: cover;
-                    margin-right: 50px;
-
-                    img {
-                        width: 240px;
-                        height: 220px;
-                        object-fit: cover;
-                    }
-
-                    .gym_options {
-                        font-weight: 400;
-                        font-size: 20px;
-                        line-height: 20px;
-                        color: #6d6d6d;
-                        margin-top: 10px;
-                        text-align: center;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
                     }
                 }
-            }
 
-            .gym-info-left {
-                width: 820px;
+                .gym_options_container {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(220px, max-content));
+                    grid-auto-rows: 270px;
+                    column-gap: 30px;
+                    row-gap: 30px;
+
+                    .gym_details_option {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        
+
+                        .option_image {
+                            width: 100%;
+                            height: 220px;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+                                height: 220px;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .option_title {
+                            font-weight: 400;
+                            font-size: 20px;
+                            line-height: 20px;
+                            color: #6d6d6d;
+                            margin-top: 10px;
+                            text-align: center;
+                        }
+                    }
+                }
             }
 
             .gym-info-right {
-
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 overflow: hidden;
+                min-width: 250px;
 
                 .googlemap {
                     height: 300px;
@@ -114,11 +127,34 @@
                 }
             }
 
-            .separation-line{
+            .separation-line {
                 width: 1px;
                 border-left: 1px dashed #ccc;
-                background-color:transparent;
+                background-color: transparent;
                 margin: 0 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .gym-detail-container {
+        padding-inline: 5vw;
+    }
+}
+
+@media screen and (max-width: 1192px) {
+    .gym-detail-container {
+        .content_area {
+            .gym_info_area {
+                flex-direction: column;
+
+                .separation-line {
+                    width: 100%;
+                    border-left: none;
+                    border-bottom: 1px dashed #ccc;
+                    margin: 30px 0;
+                }
             }
         }
     }

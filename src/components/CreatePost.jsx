@@ -1,9 +1,12 @@
 import React, { useRef, useState } from 'react'
-import { uploadFileToCloudinaryApi } from '../api/file.api';
+import { useEffect } from 'react';
 
-const CreatePost = ({formik}) => {
-    const [imageURL, setImageURL] = useState();
-    const [selectedFile, setSelectedFile] = useState();
+const CreatePost = ({ errors, formData,
+    handleCancelFormData, handleChangeFormData, handleSubmitForm,
+    imageURL, setImageURL, handleChangeFile
+}) => {
+
+    const [activeSubmit, setActiveSubmit] = useState(false);
 
     const fileRef = useRef();
 
@@ -13,26 +16,13 @@ const CreatePost = ({formik}) => {
         }
     }
 
-    const handleChangeFile = (e) => {
-        const file = e.target.files[0];
-        const url = URL.createObjectURL(file);
-        setImageURL(url);
-        setSelectedFile(file);
-    }
-
-    const handleUploadImageToCloud = () => {
-        uploadFileToCloudinaryApi(selectedFile)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-    const handleSubmitToCreatePost = () => {
-        console.log(formik.errors)
-    }
+    useEffect(() => {
+        if (!errors.title && !errors.content && !errors.image) {
+            setActiveSubmit(true);
+        } else {
+            setActiveSubmit(false);
+        }
+    }, [errors])
 
     return (
         <div className='create-post-container'>
@@ -44,16 +34,16 @@ const CreatePost = ({formik}) => {
                 <div className="create_post_main flex-container">
                     <div className="flex-container title_n_content">
                         <label htmlFor="title">Title</label>
-                        <input id="title" type="text" 
+                        <input id="title" type="text"
                             name='title'
-                            value={formik.values.title}
-                            onChange={formik.handleChange}
+                            value={formData.title}
+                            onChange={handleChangeFormData}
                         />
                         <label htmlFor="content">Content</label>
                         <textarea id="content"
                             name='content'
-                            value={formik.values.content}
-                            onChange={formik.handleChange}
+                            value={formData.content}
+                            onChange={handleChangeFormData}
                         ></textarea>
                     </div>
                     <div className="side_form">
@@ -62,7 +52,6 @@ const CreatePost = ({formik}) => {
                             <div className="flex-container image_n_preview">
                                 <div className="Neon Neon-theme-dragdropbox">
                                     <input
-                                        name="files[]"
                                         type="file"
                                         ref={fileRef}
                                         onChange={handleChangeFile}
@@ -80,12 +69,14 @@ const CreatePost = ({formik}) => {
                             </div>
                         </div>
                         <div className="flex-container button_area">
-                            <button className="flex-container save_button"
-                                onClick={handleSubmitToCreatePost}
+                            <button className={activeSubmit ? "flex-container save_button" : "flex-container block_button"}
+                                onClick={handleSubmitForm}
                             >
                                 Save
                             </button>
-                            <button className="flex-container cancel_button">
+                            <button className="flex-container cancel_button"
+                                onClick={handleCancelFormData}
+                            >
                                 Cancel
                             </button>
                         </div>

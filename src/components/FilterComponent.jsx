@@ -1,6 +1,6 @@
 import { CiSearch } from "react-icons/ci"
 import { IoClose } from "react-icons/io5"
-import { FaFilter } from "react-icons/fa"
+import { FaFilter, FaMapMarkerAlt } from "react-icons/fa"
 import { useNavigate } from "react-router-dom";
 
 const FilterComponent = ({
@@ -33,6 +33,9 @@ const FilterComponent = ({
 								<button
 									key={option.id}
 									className={option.selected ? "option selected" : "option"}
+									style={{
+										backgroundColor: option.selected ? option.backgroundColor : ''
+									}}
 									onClick={() => {
 										changeOptionSelected(option.id)
 									}}
@@ -53,7 +56,7 @@ const FilterComponent = ({
 									}}
 								>
 									<div className="filter-data-item-image">
-										<img src={post.image} alt="data-image" />
+										<img src={post.image} alt="data-img" />
 									</div>
 									<div className="filter-data-item-title">
 										{post.title}
@@ -68,10 +71,11 @@ const FilterComponent = ({
 									}}
 								>
 									<div className="filter-data-item-image">
-										<img src={gym.logo} alt="data-image" />
+										<img src={gym.logo} alt="data-img" />
 									</div>
-									<div className="filter-data-item-title">
-										{gym.name}
+									<div className="filter-data-content">
+										<p className="filter-data-gym-name">{gym.name}</p>
+										<p className="filter-data-gym-address"><FaMapMarkerAlt/> {gym.address.address}</p>
 									</div>
 								</div>
 							))}
