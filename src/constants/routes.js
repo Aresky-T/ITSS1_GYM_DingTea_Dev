@@ -5,4 +5,6 @@ export const APP_ROUTE = {
     POST_DETAILS: "/post/:id",
     GYM_DETAILS: "/gym/:id",
     CREATE_POST: "/create-post",
+    POST_MANAGER: "/admin/post-manager",
+    ACCOUNT_MANAGER: "/admin/account-manager"
 }

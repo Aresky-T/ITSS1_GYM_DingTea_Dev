@@ -57,6 +57,7 @@ table {
     --shadow-color-2: rgba(0, 0, 0, 0.4);
     // --primary-color: rgb(161, 0, 0);
     --primary-color: #F7349D;
+    --primary-color2: #2A4E62;
     --secondary-color: #35A5D5;
     --navbar-color: #ccc;
     --text-color: #0A0A0A;
@@ -118,3 +119,7 @@ body {
 @import url("./partials/_loading.scss");
 @import url("./partials/_not_found_page.scss");
 @import url("./partials/_modal_style.scss");
+@import url("./partials/_account_manager.scss");
+@import url("./partials/_post_manager.scss");
+@import url("./partials/_pagination.scss");
+@import url("./partials/_admin_confirm_modal.scss");

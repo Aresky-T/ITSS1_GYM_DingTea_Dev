@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import NotFoundPage from "../pages/NotFoundPage";
 import Layout from "../components/Layout/Layout";
+import PostManagerPage from "../pages/PostManagerPage";
+import AccountManagerPage from "../pages/AccountManagerPage";
 
 export const routes = [
     {
@@ -31,6 +33,16 @@ export const routes = [
         roles: [ROLE.GYM],
         children: [
             { path: APP_ROUTE.CREATE_POST, element: <CreatePostPage /> }
+        ]
+    },
+    {
+        path: APP_ROUTE.HOME,
+        element: <Layout/>,
+        isPrivate: true,
+        roles: [ROLE.ADMIN],
+        children: [
+            {path: APP_ROUTE.POST_MANAGER, element: <PostManagerPage/>},
+            {path: APP_ROUTE.ACCOUNT_MANAGER, element: <AccountManagerPage/>}
         ]
     },
     { path: '*', element: <NotFoundPage />, is404: true }

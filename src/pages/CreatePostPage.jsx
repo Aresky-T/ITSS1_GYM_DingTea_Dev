@@ -1,5 +1,5 @@
 import React from 'react'
-import CreatePostContainer from '../containers/CreatePostContainer'
+import CreatePostContainer from '../containers/gym/CreatePostContainer'
 
 const CreatePostPage = () => {
   return (

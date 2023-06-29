@@ -185,7 +185,6 @@
 @media screen and (max-width: 1192px) {
     .create-post-container {
         .content_area {
-
             .create_post_title {
                 text-align: center;
             }
@@ -195,19 +194,20 @@
                 align-items: center;
                 height: fit-content;
 
-                .title_n_content, .side_form {
+                .title_n_content,
+                .side_form {
                     width: 100%;
                     align-items: center;
                 }
 
                 .title_n_content {
-                    input, textarea {
+                    input,
+                    textarea {
                         width: 650px;
                     }
                 }
 
                 .side_form {
-
                     .side_form_upload_image {
                         width: 100%;
                         display: flex;

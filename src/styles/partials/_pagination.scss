@@ -1,0 +1,24 @@
+.pagination-main {
+    .paginate-item {
+        border: none;
+        border-radius: 3px;
+        background-color: #fff;
+        color: var(--primary-color);
+        font-size: 18px;
+        font-weight: 600;
+        padding: 5px 10px;
+        margin: 0 5px;
+        transition: background-color 0.1s linear;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+    }
+
+    .active {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+}

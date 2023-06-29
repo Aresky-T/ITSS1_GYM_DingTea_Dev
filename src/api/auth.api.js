@@ -7,3 +7,7 @@ export const loginUserApi = ({ email, password }) => {
         email, password
     })
 }
+
+export const registerUserApi = (form) => {
+    return axios.post(`${authURL}/register`, form)
+}

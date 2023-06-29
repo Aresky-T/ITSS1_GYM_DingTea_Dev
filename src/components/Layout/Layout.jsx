@@ -1,4 +1,4 @@
-import NavbarContainer from "../../containers/NavbarContainer";
+import NavbarContainer from "../../containers/global/NavbarContainer";
 import {Outlet} from "react-router-dom";
 
 const Layout = () => {

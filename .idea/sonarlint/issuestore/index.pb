@@ -15,18 +15,10 @@ B
 src/api/gym.api.js,3\d\3de066a7f58ea7034d07cfce6412c869c4d954f4
 E
 src/constants/role.js,6\8\68b3706fc1045b96ff9fd484a2a801b55b64c956
-E
-src/styles/index.scss,4\1\41e30fba9abaa1ac1dfe02388867cd3b5883c5d3
 M
 src/components/GymDetails.jsx,4\4\442f8795a37b1618b164eaca3e22edbe561685dc
 J
 src/pages/RegisterPage.jsx,9\a\9ad48ab491db5951088f56d3d028f8b4ccaa562a
-Q
-!src/components/Register/Page2.jsx,3\1\31e0d757562b764911ca935e3da7e5a460d65dac
-Q
-!src/components/Register/Page1.jsx,7\c\7cdf7cb29af626fdf9387d86800b56ea4e037c97
-K
-src/components/Register.jsx,7\1\717d4c6b600469853cf628a2a0b07e8472c9ad31
 H
 src/components/Login.jsx,b\c\bcfe37f221bbf07797db7f829f8ea61d0377fc36
 L
@@ -39,8 +31,6 @@ M
 src/components/CreatePost.jsx,7\5\75e347e37994f4f27a5a28913547852f4f5d0313
 V
 &src/containers/CreatePostContainer.jsx,7\b\7b70d74d56713676370ecae4e3859c6b5232f686
-P
- src/components/Layout/Layout.jsx,4\c\4c599cb6831e36c9be52c63d8b0c7c681e9db4fd
 J
 src/router/PrivateRoute.js,a\7\a73b2836548aeecad195f83402f4d9d28dd65717
 ;
@@ -55,8 +45,6 @@ J
 src/pages/NotFoundPage.jsx,7\1\71bd64a34cde6926a4127176d66444cfca2e8daf
 I
 src/router/PublicRoute.js,e\9\e988c88500a1e03555bb4fa4cecaf6e1451071fb
-T
-$src/containers/RegisterContainer.jsx,b\3\b392bb30f6bccd2ff7a4d7033bcbea54a0d1440c
 R
 "src/containers/NavbarContainer.jsx,c\9\c9995fe95cb6bd4471c9d8b337d33e437b58d751
 P
@@ -73,3 +61,37 @@ M
 src/redux/slice/auth.slice.js,3\8\38ad0a0bf2a533079545b3165461b25dd30d9e8a
 Q
 !src/containers/LoginContainer.jsx,9\f\9f62e7d1c8ac20f5f6fa353409481fb0c180479b
+Q
+!src/components/Register/Page2.jsx,3\1\31e0d757562b764911ca935e3da7e5a460d65dac
+Z
+*src/components/Register/AddOptionModal.jsx,8\5\8568162b0e8f63beaa0bc8cf112bd78e136031f3
+R
+"src/components/Global/Register.jsx,c\c\cc8ad4b9919289f6a13c48509ebcbeb50736803d
+[
++src/containers/global/RegisterContainer.jsx,2\5\251a3ec40683cf5ced78f119e2293b064fe47824
+P
+ src/components/Layout/Layout.jsx,4\c\4c599cb6831e36c9be52c63d8b0c7c681e9db4fd
+U
+%src/styles/partials/_modal_style.scss,b\9\b967609f24f7286025d6aa0b54f454dbbd30d464
+Q
+!src/components/Register/Page1.jsx,7\c\7cdf7cb29af626fdf9387d86800b56ea4e037c97
+R
+"src/styles/partials/_register.scss,b\b\bb7bbf8b8f7c28790f939e4411adbfdbcd2875ac
+F
+src/constants/regex.js,e\3\e3f2265d1b531e6fd51f08ef9feb35c38e8d841d
+Y
+)src/containers/global/NavbarContainer.jsx,2\f\2fe6d73e6de265abf720629926f78150fa64dc0c
+P
+ src/components/Global/Navbar.jsx,4\b\4b7b65d7c8ac1b134778fe743bc462ac626b4848
+C
+src/api/post.api.js,c\2\c23506af6e353899ed63b17b37df1a59585519c5
+Y
+)src/styles/partials/_account_manager.scss,c\c\cc22a251e0eda72b66c3a776ec180e8de3c3d893
+E
+src/styles/index.scss,4\1\41e30fba9abaa1ac1dfe02388867cd3b5883c5d3
+V
+&src/styles/partials/_post_manager.scss,0\a\0a38548e197debbda7768f9335ed039622961cb5
+]
+-src/containers/admin/PostManagerContainer.jsx,d\f\df7207319565fd5db1793f7343616178acb32c24
+T
+$src/components/Admin/PostManager.jsx,f\c\fc959de09cb9b5f4ac67ff4f9d3d27ac75bd1afc

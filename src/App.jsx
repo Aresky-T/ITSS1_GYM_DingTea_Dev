@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import Loading from "./components/Loading";
+import Loading from "./components/Global/Loading";
 import AppRouter from "./router/AppRouter";
 
 

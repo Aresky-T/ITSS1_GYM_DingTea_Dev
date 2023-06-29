@@ -6,8 +6,8 @@ export const getFiveLatestGymsApi = async () => {
     return await axios.get(`${gymURL}/recent-gyms`)
 }
 
-export const getAllGymsApi = async () => {
-    return await axios.get(`${gymURL}/list-gyms`)
+export const getAllGymsForAdminApi = async () => {
+    return await axios.get(`${gymURL}/all-accounts`)
 }
 
 export const getGymDetailsApi = async (id) => {
@@ -18,5 +18,13 @@ export const getGymsByFilterApi = async (name, ids) => {
     return await axios.post(`${gymURL}/filter-gyms`, {
         name: name,
         options: [...ids]
+    })
+}
+
+export const changeGymStatusApi = (userId, gymId, status) => {
+    return axios.put(`${gymURL}/manage-gym`, {
+        user_id: userId,
+        gym_id: gymId,
+        status
     })
 }

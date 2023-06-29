@@ -1,0 +1,123 @@
+.account-manager-container {
+    padding-inline: 10vw;
+    padding-block: 20px;
+
+    .account-manager-header {
+        padding: 20px 0;
+    }
+
+    .account-manager-main {
+        margin-top: 20px;
+        width: 100%;
+        height: fit-content;
+        background-color: var(--primary-color2);
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .account-table {
+            width: 100%;
+            color: #ffffff;
+            thead,
+            tbody,
+            tfoot {
+                width: 100%;
+
+                tr {
+                    th,
+                    td {
+                        padding: 10px 20px 10px 10px;
+                    }
+                }
+            }
+
+            thead {
+                tr {
+                    height: 50px;
+                    font-size: 17px;
+                    th {
+                        text-align: left;
+                        &:nth-child(1) {
+                            width: 20%;
+                        }
+
+                        &:nth-child(2) {
+                            width: 15%;
+                        }
+
+                        &:nth-child(3) {
+                            width: 20%;
+                        }
+
+                        &:nth-child(4) {
+                            width: 15%;
+                        }
+
+                        &:nth-child(5) {
+                        width: 10%;
+                        }
+
+                        &:nth-child(6) {
+                            width: 20%;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    height: 50px;
+                    font-size: 14px;
+                    color: #d6d6d6;
+                    td {
+                        line-height: 1.4;
+                    }
+
+                    .air__data--status {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        span {
+                            margin-right: 10px;
+                        }
+                    }
+
+                    .air__data--action {
+                        span {
+                            font-style: italic;
+                            padding: 5px;
+                            user-select: none;
+
+                            &:hover {
+                                color: var(--primary-color);
+                                text-decoration: underline;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .air__data__act--approve:hover {
+                            color: #99ff00;
+                        }
+
+                        .air__data__act--reject:hover {
+                            color: red;
+                        }
+                    }
+                }
+            }
+
+            tfoot {
+                background-color: #fff;
+            }
+        }
+
+        .pagination {
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

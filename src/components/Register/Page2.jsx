@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import AddOptionModal from './AddOptionModal';
 
-const Page2 = ({ formik }) => {
+const Page2 = ({ page2 }) => {
 
     const [selectedFiles, setSelectedFiles] = useState({
-        images: [...formik.values.imageFiles],
-        logo: [...formik.values.logoFile]
+        imageFiles: [...page2.values.imageFiles],
+        logoFile: [...page2.values.logoFile]
     })
+    const [options, setOptions] = useState([...page2.values.options]);
 
     const [isShowModal, setIsShowModal] = useState(false);
 
@@ -41,15 +42,20 @@ const Page2 = ({ formik }) => {
     }
 
     useEffect(() => {
-        if (selectedFiles.images.length > 0 && selectedFiles.logo.length > 0) {
-            formik.setValues({
-                ...formik.values,
-                imageFiles: selectedFiles.images,
-                logoFile: selectedFiles.logo
+        if (selectedFiles.imageFiles.length > 0 && selectedFiles.logoFile.length > 0) {
+            page2.setValues({
+                ...page2.values,
+                imageFiles: selectedFiles.imageFiles,
+                logoFile: selectedFiles.logoFile
             })
         }
         //eslint-disable-next-line
     }, [selectedFiles])
+    console.log(options)
+
+    useEffect(() => {
+        setOptions(page2.values.options)
+    }, [page2])
 
     return (
         <div className='page2-main'>
@@ -62,14 +68,14 @@ const Page2 = ({ formik }) => {
                         onClick={onClickChooseImage}
                     >
                         {
-                            [...selectedFiles.images].length === 0 ?
+                            [...selectedFiles.imageFiles].length === 0 ?
                                 <>
                                     <div className="rgm__choose-file">
                                         Choose file
                                     </div>
                                     <input
                                         type="file"
-                                        name='images'
+                                        name='imageFiles'
                                         multiple
                                         ref={imagesRef}
                                         onChange={handleChangeFiles}
@@ -77,7 +83,7 @@ const Page2 = ({ formik }) => {
                                 </>
                                 :
                                 <div className="rgm__selectedFiles">
-                                    {[...selectedFiles.images].map((file, index) => {
+                                    {[...selectedFiles.imageFiles].map((file, index) => {
                                         file.url = URL.createObjectURL(file);
 
                                         return (
@@ -98,20 +104,20 @@ const Page2 = ({ formik }) => {
                         onClick={onClickChooseLogo}
                     >
                         {
-                            [...selectedFiles.logo].length === 0 ?
+                            [...selectedFiles.logoFile].length === 0 ?
                                 <>
                                     <div className="rgm__choose-file">
                                         Choose file
                                     </div>
                                     <input type="file"
-                                        name='logo'
+                                        name='logoFile'
                                         ref={logoRef}
                                         onChange={handleChangeFiles}
                                     />
                                 </>
                                 :
                                 <div className="rgm__selectedFiles">
-                                    {[...selectedFiles.logo].map((file, index) => {
+                                    {[...selectedFiles.logoFile].map((file, index) => {
                                         file.url = URL.createObjectURL(file);
 
                                         return (
@@ -141,7 +147,18 @@ const Page2 = ({ formik }) => {
                 <div className="register__main">
                     <div className="rgm__options">
                         <div className="rgm_options-list">
-                            No options
+                            {options.map(opt => (
+                                <div className='rgm_options__item' key={opt.title}>
+                                    <div className="rgm_opt-img">
+                                        <img src={opt?.image} alt="" />
+                                    </div>
+                                    <div className='rgm_opt-details'>
+                                        <h4 className="rgm_opt__title">
+                                            {opt?.title}
+                                        </h4>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -153,12 +170,13 @@ const Page2 = ({ formik }) => {
                 <div className="register__main">
                     <textarea cols="30" rows="10"
                         name='description'
-                        value={formik.values.description}
-                        onChange={formik.handleChange}
+                        value={page2.values.description}
+                        onChange={page2.handleChange}
                     />
                 </div>
             </div>
             {isShowModal && <AddOptionModal
+                page2={page2}
                 setIsShowModal={setIsShowModal}
             />}
         </div>

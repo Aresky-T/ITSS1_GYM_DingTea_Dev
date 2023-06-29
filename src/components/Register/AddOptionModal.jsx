@@ -2,44 +2,88 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { getAllOptionsApi } from '../../api/option.api';
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { AiTwotoneDelete } from 'react-icons/ai';
+import * as yup from 'yup'
+import { REGEX } from '../../constants/regex';
+import { uploadFileToCloudinaryApi } from '../../api/file.api';
+import { useDispatch } from 'react-redux';
+import { offLoading, onLoading } from '../../redux/slice/loading.slice';
+import { toast } from 'react-hot-toast';
 
-const AddOptionModal = ({ setIsShowModal }) => {
+const validateOption = yup.object().shape({
+    option_id: yup.number().required("Required optionId").min(1, 'optionId must be greater than 0!'),
+    title: yup.string().required("Required title").matches(REGEX.REGEX_STRING, "Invalid title!"),
+    description: yup.string().required("Required description").matches(REGEX.REGEX_STRING, "Invalid description!"),
+    imageLocal: yup.string().required("Required local image").matches(REGEX.REGEX_STRING, "Invalid local image!")
+})
+
+const AddOptionModal = ({ setIsShowModal, page2 }) => {
     const [options, setOptions] = useState([]);
     const [option, setOption] = useState({
         option_id: 0,
         option_name: '',
         title: '',
-        image: '',
+        imageLocal: '',
+        selectedFile: '',
         description: ''
     })
+    const dispatch = useDispatch();
 
     const imageRef = useRef();
 
     const onClickUploadFile = () => {
-        if(imageRef.current){
+        if (imageRef.current) {
             imageRef.current.click();
         }
     }
 
     const handleChangeFile = (e) => {
-        
+        if (e.target) {
+            const file = e.target.files[0];
+            file.url = URL.createObjectURL(file);
+            setOption({
+                ...option, selectedFile: file, imageLocal: file.url
+            })
+        }
     }
 
-    const handleChangeOptionName = (e) => {
-        setOption({
-            ...option,
-            option_name: e.target.value
-        })
-    }
 
     const handleChangeOption = (e) => {
-        if(e.target){
-            const {name, value} = e.target;
+        if (e.target) {
+            const { name, value } = e.target;
             setOption({
                 ...option,
                 [name]: value
             })
         }
+    }
+
+    const handleSubmit = () => {
+        validateOption.isValid(option)
+            .then(isValid => {
+                if (isValid) {
+                    dispatch(onLoading());
+                    uploadFileToCloudinaryApi(option.selectedFile)
+                        .then(res => {
+                            const { option_id, title, description } = option;
+                            page2.setValues({
+                                ...page2.values,
+                                options: [...page2.values.options, { option_id, title, description, image: res.data.secure_url }]
+                            })
+                            dispatch(offLoading());
+                            setIsShowModal(false);
+                            toast.success("Add option success!")
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            dispatch(offLoading());
+                            toast.error("Add option failed!")
+                        })
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     useEffect(() => {
@@ -80,10 +124,15 @@ const AddOptionModal = ({ setIsShowModal }) => {
                                 id='demo-select-option'
                                 label='option'
                                 value={option.option_name}
-                                onChange={handleChangeOptionName}
                             >
-                                {options.map(option => (
-                                    <MenuItem value={option.name} key={option.id}>{option.name}</MenuItem>
+                                {options.map(opt => (
+                                    <MenuItem value={opt.name} key={opt.id}
+                                        onClick={() => {
+                                            setOption({
+                                                ...option, option_name: opt.name, option_id: opt.id
+                                            })
+                                        }}
+                                    >{opt.name}</MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
@@ -99,7 +148,7 @@ const AddOptionModal = ({ setIsShowModal }) => {
                     <h3 className="modal__main__title">
                         Description:
                     </h3>
-                    <textarea type="text" name="description"
+                    <textarea name="description"
                         className="option-field"
                         value={option.description}
                         onChange={handleChangeOption}
@@ -108,20 +157,40 @@ const AddOptionModal = ({ setIsShowModal }) => {
                         Upload image:
                     </h3>
                     <div className="option-image-upload">
-                        <input type="file" ref={imageRef}
-                        />
-                        <div className="choose-file">
-                            <div className="choose-file-icon"
-                                onClick={onClickUploadFile}
-                            >
-                                <img src="https://icons-for-free.com/iconfiles/png/512/cloud+upload+file+storage+upload+icon-1320190558968694328.png" alt="" />
-                            </div>
-                            <p>Upload file</p>
-                        </div>
+                        {option.imageLocal.length > 0 ?
+                            <>
+                                <div className="option-image-selected">
+                                    <img src={option.imageLocal} alt="" />
+                                </div>
+                                <span className="option-image-icon-delete"
+                                    onClick={() => {
+                                        setOption({ ...option, selectedFile: '', imageLocal: '' })
+                                    }}
+                                ><AiTwotoneDelete /></span>
+                            </>
+                            :
+                            <>
+                                <input type="file" ref={imageRef}
+                                    onChange={handleChangeFile}
+                                />
+                                <div className="choose-file"
+                                    onClick={onClickUploadFile}
+                                >
+                                    <div className="choose-file-icon"
+                                    >
+                                        <img src="https://icons-for-free.com/iconfiles/png/512/cloud+upload+file+storage+upload+icon-1320190558968694328.png" alt="" />
+                                    </div>
+                                    <p>Upload file</p>
+                                </div>
+                            </>}
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button>Add option</button>
+                    <button
+                        type='button'
+                        onClick={handleSubmit}
+                    >Add option
+                    </button>
                 </div>
             </div>
         </div>

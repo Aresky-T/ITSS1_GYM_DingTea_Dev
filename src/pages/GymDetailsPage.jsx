@@ -1,5 +1,5 @@
 import React from 'react'
-import GymDetailsContainer from '../containers/GymDetailsContainer'
+import GymDetailsContainer from '../containers/global/GymDetailsContainer'
 
 const GymDetailsPage = () => {
   return (
