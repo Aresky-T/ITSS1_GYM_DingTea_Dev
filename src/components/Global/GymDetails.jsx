@@ -1,13 +1,18 @@
 import React from 'react'
-import { useEffect } from 'react';
 import { FcAlarmClock } from 'react-icons/fc';
-import { scrollToTop } from '../../util/AppUtils';
+import mapImage from '../../img/googlemap.jpg';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const GymDetails = ({ gym }) => {
+    const [map, setMap] = useState('');
 
     useEffect(() => {
-        scrollToTop();
-    }, [])
+        const { address } = gym;
+        const string = String(address.address).replace(/ /g, "+");
+        setMap(string);
+    }, [gym])
 
     return (
         <div className='gym-detail-container'>
@@ -27,8 +32,7 @@ const GymDetails = ({ gym }) => {
                         <div className="introduce_content">
                             {gym.description}
                         </div>
-
-                        <div className="flex-container gym_image_container">
+                        <div className="gym_image_container">
                             {gym.image1 && <div className="gym_image">
                                 <img src={gym.image1} alt="gym-i1" />
                             </div>}
@@ -81,13 +85,11 @@ const GymDetails = ({ gym }) => {
                         <div className="introduce_content">
                             {gym.address?.address}
                         </div>
-                        <iframe
-                            width="450" height="250"
-                            frameborder="0"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDc7PnOq3Hxzq6dxeUVaY8WGLHIePl0swY&q=Eiffel+Tower,Paris+France`}
-                            allowfullscreen
-                        />
+                        <Link className="googlemap"
+                            to={`https://www.google.com/maps/place/${map}`}
+                        >
+                            <img src={mapImage} alt="" />
+                        </Link>
                     </div>
                 </div>
 

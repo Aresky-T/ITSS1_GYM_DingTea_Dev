@@ -4,6 +4,7 @@ import { GrStatusGoodSmall } from 'react-icons/gr'
 import { useNavigate } from 'react-router-dom'
 import ConfirmModal from './ConfirmModal'
 import { ActionType } from '../../containers/admin/PostManagerContainer'
+import { customToast } from '../../config/toastConfig'
 
 const AccountManager = ({ action, gyms, handleCloseModal, handleChangeStatusGym, handleShowModal }) => {
     const [paginate, setPaginate] = useState({
@@ -76,7 +77,11 @@ const AccountManager = ({ action, gyms, handleCloseModal, handleChangeStatusGym,
                                     >Approve</span>|
                                     <span className='air__data__act--view'
                                         onClick={() => {
-                                            navigate(`/gym/${gym.id}`)
+                                            if (gym.status === "inactive") {
+                                                customToast("Cannot view this gym!", "⚠️")
+                                            } else {
+                                                navigate(`/gym/${gym.id}`)
+                                            }
                                         }}
                                     >View</span>|
                                     <span className='air__data__act--reject'

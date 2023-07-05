@@ -131,6 +131,7 @@ const CreatePostContainer = () => {
   }
 
   useEffect(() => {
+    console.log(user);
     if (user) {
       setFormData({
         ...formData,

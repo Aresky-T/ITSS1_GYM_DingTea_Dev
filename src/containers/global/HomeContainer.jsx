@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { getRecentPostsApi } from '../../api/post.api';
 import { useEffect } from 'react';
 import { getFiveLatestGymsApi } from '../../api/gym.api';
-import { scrollToTop } from '../../util/AppUtils.js';
 
 const HomeContainer = () => {
 
@@ -36,10 +35,6 @@ const HomeContainer = () => {
     getFiveLatestGyms();
   }, [])
 
-
-  useEffect(() => {
-    scrollToTop();
-  }, []);
 
   return (
     <Home posts={posts} gyms={gyms} />

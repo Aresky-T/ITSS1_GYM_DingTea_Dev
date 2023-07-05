@@ -107,36 +107,36 @@ const Register = () => {
             form.logo = logo;
             return form;
           })
-          .then(form => {
-            registerUserApi(form)
-            .then(res => {
-              dispatch(offLoading());
-              console.log("user: ", res.data)
-              Swal.fire({
-                icon: "success",
-                title: "Successfully",
-                text: "Congratulations on successful registration!",
-                confirmButtonText: "Home",
-                showConfirmButton: true,
-                showCancelButton: false
-              })
-              .then(res => {
-                if(res.isConfirmed){
-                  navigate("/")
-                }
-              })
+            .then(form => {
+              registerUserApi(form)
+                .then(res => {
+                  dispatch(offLoading());
+                  console.log("user: ", res.data)
+                  Swal.fire({
+                    icon: "success",
+                    title: "Successfully",
+                    text: "Congratulations on successful registration!",
+                    confirmButtonText: "Login",
+                    showConfirmButton: true,
+                    showCancelButton: false
+                  })
+                    .then(res => {
+                      if (res.isConfirmed) {
+                        navigate("/auth/login")
+                      }
+                    })
+                })
+                .catch(err => {
+                  toast.error("Register failed!")
+                  dispatch(offLoading());
+                  console.log(err)
+                })
             })
             .catch(err => {
-              toast.error("Register failed!")
+              toast.error("Upload logo failed!")
               dispatch(offLoading());
               console.log(err)
-            })
-          })
-          .catch(err => {
-            toast.error("Upload logo failed!")
-            dispatch(offLoading());
-            console.log(err)
-          });
+            });
         })
         .catch(err => {
           dispatch(offLoading());
@@ -145,7 +145,12 @@ const Register = () => {
         })
       console.log(true)
     } else {
-      console.log(false)
+      Swal.fire({
+        title: "Warning",
+        icon: "warning",
+        text: "Invalid or missing data exists, please check again!",
+        confirmButtonText: "OK",
+      })
     }
   }
 

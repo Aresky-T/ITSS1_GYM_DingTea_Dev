@@ -9,6 +9,7 @@ import { uploadFileToCloudinaryApi } from '../../api/file.api';
 import { useDispatch } from 'react-redux';
 import { offLoading, onLoading } from '../../redux/slice/loading.slice';
 import { toast } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const validateOption = yup.object().shape({
     option_id: yup.number().required("Required optionId").min(1, 'optionId must be greater than 0!'),
@@ -79,6 +80,13 @@ const AddOptionModal = ({ setIsShowModal, page2 }) => {
                             dispatch(offLoading());
                             toast.error("Add option failed!")
                         })
+                } else {
+                    Swal.fire({
+                        title: "Warning", 
+                        icon: "warning",
+                        text: "Invalid or missing data exists, please check again!",
+                        confirmButtonText: "OK",
+                    })
                 }
             })
             .catch(err => {
