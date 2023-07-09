@@ -1,20 +1,19 @@
-import React, {useEffect, useState} from 'react'
-import Login from '../../components/Global/Login'
-import { loginUserApi } from '../../api/auth.api'
-import {useDispatch, useSelector} from 'react-redux'
-import { addUserInfo } from '../../redux/slice/auth.slice'
-import {useNavigate} from "react-router-dom";
-import {authSelector} from "../../redux/selector";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUserApi } from "../../api/auth.api";
+import Login from "../../components/Global/Login";
+import { authSelector } from "../../redux/selector";
+import { addUserInfo } from "../../redux/slice/auth.slice";
 
 const LoginContainer = () => {
-
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  })
+    email: "",
+    password: "",
+  });
   const [errors, setErrors] = useState({
     email: null,
-    password: null
+    password: null,
   });
   const [loginMsg, setLoginMsg] = useState();
 
@@ -26,56 +25,59 @@ const LoginContainer = () => {
       const { name, value } = e.target;
       setFormData({
         ...formData,
-        [name]: value
-      })
+        [name]: value,
+      });
     }
   };
   const validateForm = ({ email, password }) => {
     let emailLength = email.trim().length;
     let passwordLength = password.trim().length;
-    const err = { email: null, password: null }
+    const err = { email: null, password: null };
 
     if (emailLength > 0 && passwordLength > 0) {
       setErrors({
-        ...err, email: null, password: null
-      })
+        ...err,
+        email: null,
+        password: null,
+      });
       return true;
     }
 
     if (emailLength === 0) {
-      err.email = "Email can't not be blank!"
+      err.email = "メールアドレスは必須です!";
     }
 
     if (passwordLength === 0) {
-      err.password = "Password can't not be blank!"
+      err.password = "パスワードは必須です!";
     }
 
     setErrors(err);
     return false;
-  }
+  };
   const handleSubmitForm = (e) => {
     e.preventDefault();
     const validForm = validateForm(formData);
-    validForm && loginUserApi({ email: formData.email, password: formData.password })
-      .then(res => {
-        dispatch(addUserInfo(res.data.data));
-        navigate('/')
-      })
-      .catch(err => {
-        setLoginMsg(err.response.data.message);
-        console.log(err)
-      })
-  }
+    validForm &&
+      loginUserApi({ email: formData.email, password: formData.password })
+        .then((res) => {
+          dispatch(addUserInfo(res.data.data));
+          navigate("/");
+        })
+        .catch((err) => {
+          setLoginMsg(err.response.data.message);
+          console.log(err);
+        });
+  };
 
   useEffect(() => {
-    if(user){
-      navigate('/')
+    if (user) {
+      navigate("/");
     }
-  }, [navigate, user])
+  }, [navigate, user]);
 
   useEffect(() => {
-    setLoginMsg('')
-  }, [formData])
+    setLoginMsg("");
+  }, [formData]);
 
   return (
     <>
@@ -87,7 +89,7 @@ const LoginContainer = () => {
         handleChangeFormData={handleChangeFormData}
       />
     </>
-  )
-}
+  );
+};
 
-export default LoginContainer
+export default LoginContainer;
