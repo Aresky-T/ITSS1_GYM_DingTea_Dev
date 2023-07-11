@@ -9,8 +9,6 @@
 
         .post_area,
         .gym_area {
-            width: 550px;
-            min-width: 550px;
             background-color: transparent;
             box-sizing: border-box;
 
@@ -22,6 +20,13 @@
                 color: #0d0c0c;
                 margin-bottom: 30px;
             }
+        }
+
+        .gym_area{
+            width: 750px;
+        }
+        .post_area{
+            width: 350px;
         }
 
         .post_card,

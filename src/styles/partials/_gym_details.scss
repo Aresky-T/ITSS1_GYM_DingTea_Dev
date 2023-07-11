@@ -53,6 +53,15 @@
                     align-items: center;
                 }
 
+                .introduce_time{
+                    display: flex;
+                    align-items: start;
+
+                    .clock_icon {
+                        margin-top: 6px;
+                    }
+                }
+
                 .gym_image_container {
                     width: 100%;
                     margin-bottom: 50px;
@@ -80,9 +89,9 @@
                     width: 100%;
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(220px, max-content));
-                    grid-auto-rows: 270px;
+                    grid-auto-rows: 300px;
                     column-gap: 30px;
-                    row-gap: 30px;
+                    row-gap: 60px;
 
                     .gym_details_option {
                         width: 100%;
@@ -104,6 +113,13 @@
                         .option_title {
                             font-weight: 400;
                             font-size: 20px;
+                            line-height: 20px;
+                            margin-top: 10px;
+                            text-align: center;
+                        }
+                        .option_des{
+                            font-weight: 200;
+                            font-size: 16px;
                             line-height: 20px;
                             color: #6d6d6d;
                             margin-top: 10px;
@@ -155,7 +171,7 @@
                     &:hover {
                         border-radius: 10px;
                         &::after {
-                            content: "Go to Google Map";
+                            content: "Googleマップへ";
                             background-color: rgba(61, 61, 61, 0.481);
                             color: #fff;
                         }

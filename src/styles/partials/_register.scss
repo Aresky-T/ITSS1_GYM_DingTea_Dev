@@ -13,7 +13,7 @@
     .register__btn {
         margin-top: 30px;
 
-        width: 300px;
+        width: 200px;
         height: 40px;
 
         background-color: var(--secondary-color);
@@ -53,11 +53,14 @@
     }
 
     .register__p1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .register__field {
             display: flex;
             flex-direction: column;
             margin-top: 15px;
-            width: 300px;
+            width: 420px;
 
             label {
                 color: var(--text-color);
