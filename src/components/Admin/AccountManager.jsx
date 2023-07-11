@@ -62,7 +62,7 @@ const AccountManager = ({ action, gyms, handleCloseModal, handleChangeStatusGym,
                                     <span>{gym.phone_num}</span>
                                 </td>
                                 <td>
-                                    <span>{gym.address.address}</span>
+                                    <span>{gym.address?.address || "Hà Nội"}</span>
                                 </td>
                                 <td>
                                     <span>{new Date(gym.created_at).toLocaleDateString("en-US", { dateStyle: "medium" })}</span>

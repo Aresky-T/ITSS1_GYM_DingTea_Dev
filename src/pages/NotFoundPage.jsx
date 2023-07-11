@@ -1,6 +1,11 @@
-import {Link} from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
+    useEffect(() => {
+        document.title = "Not Found Page"
+    })
+
     return (
         <div className="not-found-container">
             <h1 className="not-found-title">404 - Page not found</h1>

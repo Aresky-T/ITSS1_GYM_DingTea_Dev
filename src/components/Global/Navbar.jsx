@@ -61,9 +61,15 @@ const Navbar = ({ isShowPopup, handleChangePopupStatus }) => {
 
   return (
     <div className="navbar container">
-      <Link className="logo" to="/">
-        Gym<span>Finder</span>
-      </Link>
+      {user?.type === "admin" ?
+        <Link className="logo logo-admin" to="/">
+          Gym<span>Finder</span> <span>for admin</span>
+        </Link>
+        :
+        <Link className="logo" to="/">
+          Gym<span>Finder</span>
+        </Link>
+      }
       <div className="navbar-main">
         {dataShow.isShowSearchBar && (
           <div className="search-bar" onClick={handleChangePopupStatus}>

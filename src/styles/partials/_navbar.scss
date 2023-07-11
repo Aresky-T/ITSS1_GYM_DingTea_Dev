@@ -32,6 +32,17 @@
         }
     }
 
+    .logo-admin {
+        span {
+            &:nth-child(2){
+                font-weight: 600;
+                font-size: 20px;
+                text-shadow: none;
+                color: #000;
+            }
+        }
+    }
+
     .navbar-main {
         display: flex;
         width: fit-content;
