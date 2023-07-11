@@ -152,12 +152,15 @@
                     .gym_address,
                     .gym_detail {
                         font-weight: 400;
-
                         span {
                             font-size: 15px;
                             line-height: 20px;
                             color: #6a6a6a;
                             font-style: italic;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
                         }
 
                         .address-svg-icon,

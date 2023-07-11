@@ -122,7 +122,7 @@ const Register = () => {
     const isValidPage1 = validatePage1.isValidSync(page1.values);
     const isValidPage2 = validatePage2.isValidSync(page2.values);
 
-    if (isValidPage1 || isValidPage2) {
+    if (isValidPage1 && isValidPage2) {
       let form = { ...page1.values, ...page2.values };
       dispatch(onLoading());
       handleUploadGymImages(form.imageFiles)

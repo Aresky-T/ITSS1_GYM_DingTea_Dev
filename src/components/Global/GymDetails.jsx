@@ -7,6 +7,7 @@ const GymDetails = ({ gym }) => {
 
   useEffect(() => {
     const { address } = gym;
+    if (!address) return;
     const string = String(address.address).replace(/ /g, "+");
     setMap(string);
   }, [gym]);
