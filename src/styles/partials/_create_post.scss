@@ -7,12 +7,9 @@
         .create_post_title {
             font-style: normal;
             font-weight: 700;
-            font-size: 44px;
+            font-size: 32px;
             line-height: 48px;
-
             color: #0d0c0c;
-
-            // margin-bottom: 40px;
         }
 
         .create_post_main {
@@ -36,8 +33,8 @@
                 }
 
                 input[type="text"] {
-                    height: 80px;
-                    padding: 12px 20px;
+                    height: 60px;
+                    padding: 6px 12px;
                     box-sizing: border-box;
                     background-color: #bcbcbc;
                     color: rgb(51, 51, 51);
@@ -102,7 +99,7 @@
                             padding: 25px;
                             color: #777777;
                             font-weight: 300;
-                            font-size: 24px;
+                            font-size: 16px;
                             background: #fff;
                             border: 2px dashed #c8cbce;
                             text-align: center;
@@ -135,14 +132,14 @@
                 }
 
                 .button_area {
-                    justify-content: space-between;
+                    justify-content: start;
 
                     button {
-                        width: 280px;
-                        height: 80px;
+                        width: 200px;
+                        height: 60px;
                         color: white;
                         font-weight: 500;
-                        font-size: 32px;
+                        font-size: 24px;
                         cursor: pointer;
                         outline: none;
                         border: none;

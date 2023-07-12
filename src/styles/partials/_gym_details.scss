@@ -89,9 +89,9 @@
                     width: 100%;
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(220px, max-content));
-                    grid-auto-rows: 300px;
+                    grid-auto-rows: 360px;
                     column-gap: 30px;
-                    row-gap: 60px;
+                    row-gap: 10px;
 
                     .gym_details_option {
                         width: 100%;
@@ -119,7 +119,7 @@
                         }
                         .option_des{
                             font-weight: 200;
-                            font-size: 16px;
+                            font-size: 14px;
                             line-height: 20px;
                             color: #6d6d6d;
                             margin-top: 10px;
