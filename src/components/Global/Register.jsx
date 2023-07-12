@@ -8,9 +8,10 @@ import * as yup from "yup";
 import { registerUserApi } from "../../api/auth.api";
 import { uploadFileToCloudinaryApi } from "../../api/file.api";
 import { REGEX } from "../../constants/regex";
-import { offLoading, onLoading } from "../../redux/slice/loading.slice";
+import { offLoading } from "../../redux/slice/loading.slice";
 import Page1 from "../Register/Page1";
 import Page2 from "../Register/Page2";
+import { onLoading } from "./../../redux/slice/loading.slice";
 
 const validatePage1 = yup.object().shape({
   name: yup
@@ -133,6 +134,8 @@ const Register = () => {
           return form;
         })
         .then((form) => {
+          console.log("🚀 ~ file: Register.jsx:137 ~ .then ~ form:", form);
+          // return;
           handleUploadLogo(form.logoFile[0])
             .then((logo) => {
               form.logo = logo;

@@ -80,7 +80,7 @@ const PostDetails = ({ post, recentPosts, recentGyms }) => {
                 <div className="gym_content_item gym_name">{gym.name}</div>
                 <div className="gym_content_item gym_address">
                   <p>
-                    <b>アドレス:</b> <i>{gym.address.address}</i>
+                    <b>アドレス:</b> <i>{gym.address?.address}</i>
                   </p>
                 </div>
                 <div className="gym_content_item gym_detail">
