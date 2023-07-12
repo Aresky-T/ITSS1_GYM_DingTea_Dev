@@ -8,7 +8,7 @@ export const menu1 = [
     isPublic: true,
   },
   {
-    title: "サインアップ",
+    title: "登録",
     path: APP_ROUTE.REGISTER,
     isPublic: true,
   },

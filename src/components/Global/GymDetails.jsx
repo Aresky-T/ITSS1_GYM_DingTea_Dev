@@ -70,7 +70,7 @@ const GymDetails = ({ gym }) => {
           <div className="gym-info-right">
             <div className="introduce">モットー</div>
             <div className="introduce_content">
-              Vui lòng khách đến, vừa lòng khách đi
+              顧客に最高品質のサービスを提供する
             </div>
             <div className="introduce">営業時間</div>
             <div className="introduce_content introduce_time">
